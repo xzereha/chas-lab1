@@ -7,7 +7,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ProductManager {
+    private static final Logger logger = LoggerFactory.getLogger(ProductManager.class);
     private final Map<String, Product> products;
 
     public ProductManager() {
@@ -16,7 +20,10 @@ public class ProductManager {
     }
 
     public void registerProduct(Product product) {
-        products.computeIfAbsent(product.getName(), k -> product);
+        products.computeIfAbsent(product.getName(), k -> {
+            logger.info("Registered product {}", product.getName());
+            return product;
+        });
     }
 
     /**
