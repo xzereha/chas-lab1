@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,16 @@ public class OrderManager {
         orders = new HashMap<>();
     }
 
-    public void addOrder(String costumerName, Order order) {
-        // Append the new order, creating the Order list for the specified costumer if
+    public void addOrder(String customerName, Order order) {
+        // Append the new order, creating the Order list for the specified customer if
         // missing.
-        // ArrayList is used for the per-costumer orders since the common case is
+        // ArrayList is used for the per-customer orders since the common case is
         // listing the orders.
-        orders.computeIfAbsent(costumerName, (k) -> new ArrayList<>()).add(order);
+        orders.computeIfAbsent(customerName, (k) -> new ArrayList<>()).add(order);
+    }
+
+    public Optional<List<Order>> getOrders(String customerName) {
+        return Optional.ofNullable(orders.get(customerName));
     }
 
     public Optional<Double> getCustomerSpending(String customerName) {
@@ -28,5 +33,14 @@ public class OrderManager {
                 .map(list -> list.stream()
                         // And get the double by summing all the costs
                         .mapToDouble(Order::getCost).sum());
+    }
+
+    /**
+     * Gets the collection of all orders in the system.
+     * 
+     * @return A Collection containing all orders.
+     */
+    public Collection<List<Order>> getOrders() {
+        return orders.values();
     }
 }
