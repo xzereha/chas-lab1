@@ -23,12 +23,10 @@ public class OrderManager {
     }
 
     public Optional<Double> getCustomerSpending(String customerName) {
-        List<Order> orders = this.orders.get(customerName);
-        if (orders == null) {
-            return Optional.empty();
-        }
-        // Use the per Order getCost and sum these together
-        double totalCost = orders.stream().mapToDouble(Order::getCost).sum();
-        return Optional.of(totalCost);
+        return Optional.ofNullable(this.orders.get(customerName))
+                // Change the type of the Optional from List to Double
+                .map(list -> list.stream()
+                        // And get the double by summing all the costs
+                        .mapToDouble(Order::getCost).sum());
     }
 }
