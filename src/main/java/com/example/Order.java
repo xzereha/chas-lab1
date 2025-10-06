@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,10 +60,11 @@ public class Order {
      * Get a list of each entry in the order.
      * This contains both the type of product and the amount that is ordered.
      * 
-     * @return Map of Product, Count for the order
+     * @return Read-only Map of Product, Count for the order
      */
     public Map<Product, Integer> getEntries() {
-        return entries;
+        // Changing to read-only so callers can't modify our internal state.
+        return Collections.unmodifiableMap(entries);
     }
 
     /**
