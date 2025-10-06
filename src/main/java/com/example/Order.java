@@ -25,4 +25,14 @@ public class Order {
         return customerName;
     }
 
+    /**
+     * Calculates the total cost of the Order
+     * 
+     * @return the total cost of the order
+     */
+    public double getCost() {
+        // First map to an iterator of double then sum those.
+        return products.stream().mapToDouble(Product::getPrice).sum();
+    }
+
 }
