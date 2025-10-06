@@ -3,17 +3,19 @@ package com.example;
 import java.util.List;
 
 public class Order {
-    private final String orderID;
-    private List<Product> products;
+    /** Auto incrementing ID */
+    private static long nextID = 0;
+    private final long orderID;
+    private final List<Product> products;
     private final String customerName;
 
-    public Order(String orderID, List<Product> products, String customerName) {
-        this.orderID = orderID;
+    public Order(List<Product> products, String customerName) {
+        this.orderID = nextID++;
         this.products = products;
         this.customerName = customerName;
     }
 
-    public String getOrderID() {
+    public long getOrderID() {
         return orderID;
     }
 
