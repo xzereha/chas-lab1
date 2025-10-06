@@ -78,4 +78,9 @@ public class Product {
         if (price >= 0.0)
             this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s)", name, category);
+    }
 }
