@@ -44,7 +44,20 @@ public class ProductManager {
     }
 
     /**
+     * Gets a list of all products sorted by price.
+     * 
+     * @return A list of all registered products.
+     */
+    public List<Product> listProducts() {
+        return products.values()
+                .stream()
+                .sorted(Comparator.comparing(Product::getPrice))
+                .collect(Collectors.toList());
+    }
+
+    /**
      * Gets a list of all products belonging to the provided category.
+     * This list will be sorted by price.
      * 
      * @param category Name of the Category to list.
      * @return A list of all matching products, or an empty list if no matches.
@@ -52,7 +65,10 @@ public class ProductManager {
     public List<Product> listProducts(String category) {
         // Using stream iterator to first select the correct category, then uses the
         // Comparator API to sort the remaining items by price.
-        return products.values().stream().filter(product -> product.getCategory().equals(category))
-                .sorted(Comparator.comparing(Product::getPrice)).collect(Collectors.toList());
+        return products.values()
+                .stream()
+                .filter(product -> product.getCategory().equals(category))
+                .sorted(Comparator.comparing(Product::getPrice))
+                .collect(Collectors.toList());
     }
 }
