@@ -6,7 +6,7 @@ import org.slf4j.IMarkerFactory;
 public class MySLF4JServiceProvider implements SLF4JServiceProvider {
     @Override
     public void initialize() {
-        // Initialization logic for your logger
+        // No initialization needed for this
     }
 
     @Override
@@ -21,13 +21,11 @@ public class MySLF4JServiceProvider implements SLF4JServiceProvider {
 
     @Override
     public IMarkerFactory getMarkerFactory() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getMarkerFactory'");
     }
 
     @Override
     public org.slf4j.spi.MDCAdapter getMDCAdapter() {
-        // Return your custom MDCAdapter implementation
-        return null;
+        throw new UnsupportedOperationException("Unimplemented method 'getMDCAdapter'");
     }
 }
