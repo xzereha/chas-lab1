@@ -26,6 +26,7 @@ public class MySLF4JServiceProvider implements SLF4JServiceProvider {
 
     @Override
     public org.slf4j.spi.MDCAdapter getMDCAdapter() {
-        throw new UnsupportedOperationException("Unimplemented method 'getMDCAdapter'");
+        // No clue what this is for, so just return null
+        return null;
     }
 }
