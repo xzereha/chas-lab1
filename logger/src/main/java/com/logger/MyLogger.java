@@ -5,6 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 import org.slf4j.Marker;
 
+/**
+ * A really basic logger implementation that logs to the console.
+ * Created for educational purposes only.
+ */
 public class MyLogger implements org.slf4j.Logger {
 
     private enum Level {
@@ -64,24 +68,19 @@ public class MyLogger implements org.slf4j.Logger {
         logMessage(Level.TRACE, msg);
     }
 
-    // Helper to format messages
-    private String formatMsg(String format, Object... args) {
-        return String.format(format.replace("{}", "%s"), args);
-    }
-
     @Override
     public void trace(String format, Object arg) {
-        trace(formatMsg(format, arg));
+        trace(String.format(format.replace("{}", "%s"), arg));
     }
 
     @Override
     public void trace(String format, Object arg1, Object arg2) {
-        trace(formatMsg(format, arg1, arg2));
+        trace(String.format(format.replace("{}", "%s"), arg1, arg2));
     }
 
     @Override
     public void trace(String format, Object... arguments) {
-        trace(formatMsg(format, arguments));
+        trace(String.format(format.replace("{}", "%s"), arguments));
     }
 
     @Override
@@ -89,40 +88,36 @@ public class MyLogger implements org.slf4j.Logger {
         trace(msg + "\n" + t);
     }
 
+    // Just ignore the Marker parameter and call the non-Marker version
+
     @Override
     public boolean isTraceEnabled(Marker marker) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isTraceEnabled'");
+        return isTraceEnabled();
     }
 
     @Override
     public void trace(Marker marker, String msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trace'");
+        trace(msg);
     }
 
     @Override
     public void trace(Marker marker, String format, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trace'");
+        trace(format, arg);
     }
 
     @Override
     public void trace(Marker marker, String format, Object arg1, Object arg2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trace'");
+        trace(format, arg1, arg2);
     }
 
     @Override
     public void trace(Marker marker, String format, Object... argArray) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trace'");
+        trace(format, argArray);
     }
 
     @Override
     public void trace(Marker marker, String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trace'");
+        trace(msg, t);
     }
 
     @Override
@@ -156,40 +151,36 @@ public class MyLogger implements org.slf4j.Logger {
         t.printStackTrace(System.out);
     }
 
+    // Just ignore the Marker parameter and call the non-Marker version
+
     @Override
     public boolean isDebugEnabled(Marker marker) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isDebugEnabled'");
+        return isDebugEnabled();
     }
 
     @Override
     public void debug(Marker marker, String msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'debug'");
+        debug(msg);
     }
 
     @Override
     public void debug(Marker marker, String format, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'debug'");
+        debug(format, arg);
     }
 
     @Override
     public void debug(Marker marker, String format, Object arg1, Object arg2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'debug'");
+        debug(format, arg1, arg2);
     }
 
     @Override
     public void debug(Marker marker, String format, Object... arguments) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'debug'");
+        debug(format, arguments);
     }
 
     @Override
     public void debug(Marker marker, String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'debug'");
+        debug(msg, t);
     }
 
     @Override
@@ -222,44 +213,40 @@ public class MyLogger implements org.slf4j.Logger {
 
     @Override
     public void info(String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(msg);
+        t.printStackTrace(System.out);
     }
+
+    // Just ignore the Marker parameter and call the non-Marker version
 
     @Override
     public boolean isInfoEnabled(Marker marker) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isInfoEnabled'");
+        return isInfoEnabled();
     }
 
     @Override
     public void info(Marker marker, String msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(msg);
     }
 
     @Override
     public void info(Marker marker, String format, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(format, arg);
     }
 
     @Override
     public void info(Marker marker, String format, Object arg1, Object arg2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(format, arg1, arg2);
     }
 
     @Override
     public void info(Marker marker, String format, Object... arguments) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(format, arguments);
     }
 
     @Override
     public void info(Marker marker, String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'info'");
+        info(msg, t);
     }
 
     @Override
@@ -293,40 +280,36 @@ public class MyLogger implements org.slf4j.Logger {
         t.printStackTrace(System.out);
     }
 
+    // Just ignore the Marker parameter and call the non-Marker version
+
     @Override
     public boolean isWarnEnabled(Marker marker) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isWarnEnabled'");
+        return isWarnEnabled();
     }
 
     @Override
     public void warn(Marker marker, String msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warn'");
+        warn(msg);
     }
 
     @Override
     public void warn(Marker marker, String format, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warn'");
+        warn(format, arg);
     }
 
     @Override
     public void warn(Marker marker, String format, Object arg1, Object arg2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warn'");
+        warn(format, arg1, arg2);
     }
 
     @Override
     public void warn(Marker marker, String format, Object... arguments) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warn'");
+        warn(format, arguments);
     }
 
     @Override
     public void warn(Marker marker, String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warn'");
+        warn(msg, t);
     }
 
     @Override
@@ -363,40 +346,36 @@ public class MyLogger implements org.slf4j.Logger {
         t.printStackTrace(System.out);
     }
 
+    // Just ignore the Marker parameter and call the non-Marker version
+
     @Override
     public boolean isErrorEnabled(Marker marker) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isErrorEnabled'");
+        return isErrorEnabled();
     }
 
     @Override
     public void error(Marker marker, String msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'error'");
+        error(msg);
     }
 
     @Override
     public void error(Marker marker, String format, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'error'");
+        error(format, arg);
     }
 
     @Override
     public void error(Marker marker, String format, Object arg1, Object arg2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'error'");
+        error(format, arg1, arg2);
     }
 
     @Override
     public void error(Marker marker, String format, Object... arguments) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'error'");
+        error(format, arguments);
     }
 
     @Override
     public void error(Marker marker, String msg, Throwable t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'error'");
+        error(msg, t);
     }
 
 }
