@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class OrderManager {
+public class OrderRegistry {
     private final Map<String, List<Order>> orders;
 
-    public OrderManager() {
+    public OrderRegistry() {
         // Using HashMap to enable lookup of orders.
         orders = new HashMap<>();
     }

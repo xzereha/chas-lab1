@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StoreAnalyticsTest {
     @Test
     void testGetMostPopularProductsEmpty() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         StoreAnalytics analytics = new StoreAnalytics(mgr);
         assertTrue(analytics.getMostPopularProducts(5).isEmpty());
     }
 
     @Test
     void testGetMostPopularProducts() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         StoreAnalytics analytics = new StoreAnalytics(mgr);
         Product hammer = new Product("Hammer", "Hardware", 10.0);
         Product nails = new Product("Nails", "Hardware", 0.1);

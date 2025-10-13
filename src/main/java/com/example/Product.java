@@ -1,15 +1,21 @@
 package com.example;
 
+import java.util.Objects;
+
 public class Product {
     /** Auto incrementing ID */
     private static long nextID = 0;
     private final long id;
-    private String name;
-    private String category;
+    private final String name;
+    private final String category;
     private double price;
 
     /**
      * Create a new product
+     * 
+     * IMPORTANT: Don't directly create a Product, to create use the Factory.
+     * 
+     * @see ProductFactory
      * 
      * @param name     The name of the product, must not be empty.
      * @param category The category the product belongs to, must not be empty.
@@ -39,30 +45,8 @@ public class Product {
         return name;
     }
 
-    /**
-     * Change the name of the product.
-     * 
-     * @param name The new name of the product, if the name is empty this call is
-     *             ignored.
-     */
-    public void setName(String name) {
-        if (!name.isEmpty())
-            this.name = name;
-    }
-
     public String getCategory() {
         return category;
-    }
-
-    /**
-     * Change the category of the product.
-     * 
-     * @param category The new category of the product, if the category is empty
-     *                 this call is ignored.
-     */
-    public void setCategory(String category) {
-        if (!category.isEmpty())
-            this.category = category;
     }
 
     public double getPrice() {
@@ -82,5 +66,24 @@ public class Product {
     @Override
     public String toString() {
         return String.format("%s (%s)", name, category);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+        if (!(other instanceof Product))
+            return false;
+
+        Product p = (Product) other;
+        return Long.compare(id, p.id) == 0 &&
+                Double.compare(p.price, price) == 0 &&
+                name.equals(p.name) &&
+                category.equals(p.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category, price);
     }
 }

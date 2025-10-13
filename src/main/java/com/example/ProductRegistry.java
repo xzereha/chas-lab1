@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProductManager {
-    private static final Logger logger = LoggerFactory.getLogger(ProductManager.class);
+public class ProductRegistry {
+    private static final Logger logger = LoggerFactory.getLogger(ProductRegistry.class);
     private final Map<String, Product> products;
 
-    public ProductManager() {
+    public ProductRegistry() {
         // Using HashMap to enable lookup for products by name.
         products = new HashMap<>();
     }
@@ -48,6 +48,13 @@ public class ProductManager {
 
     public Optional<Product> getProduct(String name) {
         return Optional.ofNullable(products.get(name));
+    }
+
+    public Optional<Product> getProduct(long id) {
+        return products.values()
+                .stream()
+                .filter(p -> p.getId() == id)
+                .findFirst();
     }
 
     /**

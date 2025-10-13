@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OrderManagerTest {
     @Test
     void testStartsEmpty() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         assertTrue(mgr.getOrders("Alice").isEmpty());
     }
 
     @Test
     void testAddOrder() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         Order order = new Order("Alice");
         mgr.addOrder("Alice", order);
         assertFalse(mgr.getOrders("Alice").isEmpty());
@@ -20,7 +20,7 @@ public class OrderManagerTest {
 
     @Test
     void testGetOrdersForNonExistentCustomer() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         assertTrue(mgr.getOrders("Bob").isEmpty());
         mgr.addOrder("Alice", new Order("Alice"));
         assertFalse(mgr.getOrders("Alice").isEmpty());
@@ -29,13 +29,13 @@ public class OrderManagerTest {
 
     @Test
     void testGetCustomerSpendingEmpty() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         assertTrue(mgr.getCustomerSpending("Alice").isEmpty());
     }
 
     @Test
     void testGetCustomerSpending() {
-        OrderManager mgr = new OrderManager();
+        OrderRegistry mgr = new OrderRegistry();
         Order order1 = new Order("Alice");
         Order order2 = new Order("Alice");
         order1.addProduct(new Product("Hammer", "Hardware", 10.0), 2); // 20.0

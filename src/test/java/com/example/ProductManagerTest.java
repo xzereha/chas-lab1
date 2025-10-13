@@ -9,20 +9,20 @@ public class ProductManagerTest {
 
     @Test
     void testStartsEmpty() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         assertTrue(mgr.listProducts().isEmpty());
     }
 
     @Test
     void testRegisterProduct() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         mgr.registerProduct(new Product("Hammer", "Hardware", 100.0));
         assertFalse(mgr.listProducts().isEmpty());
     }
 
     @Test
     void testListProductsOrder() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         Product apple = new Product("Apple", "Fruit", 10.0);
         Product banana = new Product("Banana", "Fruit", 5.0);
         mgr.registerProduct(apple);
@@ -34,7 +34,7 @@ public class ProductManagerTest {
 
     @Test
     void testListProductsByCategory() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         Product apple = new Product("Apple", "Fruit", 10.0);
         Product hammer = new Product("Hammer", "Hardware", 5.0);
         mgr.registerProduct(apple);
@@ -47,7 +47,7 @@ public class ProductManagerTest {
 
     @Test
     void testRemoveProduct() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         Product apple = new Product("Apple", "Fruit", 10.0);
         mgr.registerProduct(apple);
         assertTrue(mgr.removeProduct(apple));
@@ -56,7 +56,7 @@ public class ProductManagerTest {
 
     @Test
     void testRemoveProductByName() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         Product apple = new Product("Apple", "Fruit", 10.0);
         mgr.registerProduct(apple);
         assertTrue(mgr.removeProduct("Apple"));
@@ -65,20 +65,20 @@ public class ProductManagerTest {
 
     @Test
     void testGetProductEmpty() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         assertTrue(mgr.getProduct("Apple").isEmpty());
     }
 
     @Test
     void testGetProductInvalid() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         assertTrue(mgr.getProduct("InvalidProduct").isEmpty());
 
     }
 
     @Test
     void testGetProductValid() {
-        ProductManager mgr = new ProductManager();
+        ProductRegistry mgr = new ProductRegistry();
         Product apple = new Product("Apple", "Fruit", 10.0);
         mgr.registerProduct(apple);
         assertTrue(mgr.getProduct("Apple").isPresent());
