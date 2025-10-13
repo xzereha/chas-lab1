@@ -3,8 +3,8 @@ package com.example;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import com.example.exceptions.CustomerNotFoundException;
 import com.example.exceptions.ProductNotFoundException;
