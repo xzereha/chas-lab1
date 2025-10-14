@@ -2,7 +2,12 @@ package com.example;
 
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Product {
+    private static final Logger logger = LoggerFactory.getLogger(Product.class);
+
     /** Auto incrementing ID */
     private static long nextID = 0;
     private final long id;
@@ -59,8 +64,10 @@ public class Product {
      * @param price New price, will be ignored if set to a negative value.
      */
     public void setPrice(double price) {
-        if (price >= 0.0)
+        if (price >= 0.0) {
             this.price = price;
+            logger.info("Price of product {} updated to ${}", name, price);
+        }
     }
 
     @Override
