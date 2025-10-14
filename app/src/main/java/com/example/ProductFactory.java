@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProductFactory {
-    // I like singletons
+    // I like singletons, when stuff needs to be unique
     private static ProductFactory singleton = null;
 
     private final Map<String, Product> productCache;
