@@ -2,6 +2,11 @@
 
 This is a study assignment for basic Java
 
+## Prerequisites
+
+- Maven
+- Java 21
+
 ## How to Build
 
 From the root directory, run:
