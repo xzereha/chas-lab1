@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.exceptions.CustomerNotFoundException;
+import com.example.exceptions.ProductNotFoundException;
+
 public class Demo {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(Demo.class);
 
@@ -67,5 +70,18 @@ public class Demo {
         store.mostPopularProducts(3).forEach((e) -> {
             System.out.printf("%s : %d sold%n", e.getKey().getName(), e.getValue().intValue());
         });
+
+        logger.info("Showcasing error handling");
+        try {
+            store.getProduct("NonExistingProduct");
+        } catch (ProductNotFoundException e) {
+            logger.error("Caught product exception: {}", e.getMessage());
+        }
+
+        try {
+            store.getCustomerSpending("NonExistingCustomer");
+        } catch (CustomerNotFoundException e) {
+            logger.error("Caught customer exception: {}", e.getMessage());
+        }
     }
 }
