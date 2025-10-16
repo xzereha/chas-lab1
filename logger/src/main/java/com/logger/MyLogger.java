@@ -36,6 +36,7 @@ public class MyLogger implements org.slf4j.Logger {
         }
     }
 
+    private final FileLogger fileLogger = FileLogger.getInstance();
     private final String name;
 
     public MyLogger(String name) {
@@ -51,6 +52,8 @@ public class MyLogger implements org.slf4j.Logger {
         // Formatting the message is [TIME LEVEL NAME] MSG
         // With color codes for the level so it stands out in the console
         System.out.printf("[%s %s%s\u001B[0m %s] %s\n", timestamp, level.colorCode(), level.label(), name, msg);
+        // Also log to file
+        fileLogger.log(String.format("[%s %s %s] %s%n", timestamp, level.label(), name, msg));
     }
 
     @Override
