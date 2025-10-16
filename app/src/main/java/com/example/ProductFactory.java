@@ -29,8 +29,17 @@ public class ProductFactory {
         return singleton;
     }
 
-    public Product getOrCreateProduct(String name, String category, double price) {
+    /**
+     * Get an existing product or create a new one if it does not exist.
+     * The unique identifier is a combination of name and category.
+     * 
+     * @param name         The name of the product.
+     * @param category     The category of the product.
+     * @param initialPrice The initial price of the product.
+     * @return The existing or newly created product.
+     */
+    public Product getOrCreateProduct(String name, String category, double initialPrice) {
         String key = String.format("%s |%s|", name, category);
-        return productCache.computeIfAbsent(key, k -> new Product(name, category, price));
+        return productCache.computeIfAbsent(key, k -> new Product(name, category, initialPrice));
     }
 }
