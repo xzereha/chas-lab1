@@ -66,7 +66,7 @@ public class Store {
         orderManager.addOrder(customerName, order);
     }
 
-    public List<Entry<Product, Double>> mostPopularProducts(int count) {
+    public List<Entry<Product, Integer>> mostPopularProducts(int count) {
         return analytics.getMostPopularProducts(count);
     }
 

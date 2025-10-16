@@ -31,10 +31,10 @@ public class StoreAnalyticsTest {
         assertEquals(3, popular.size());
 
         assertEquals(nails, popular.get(0).getKey());
-        assertEquals(100.0, popular.get(0).getValue());
+        assertEquals(100, popular.get(0).getValue());
         assertEquals(hammer, popular.get(1).getKey());
-        assertEquals(3.0, popular.get(1).getValue());
+        assertEquals(3, popular.get(1).getValue());
         assertEquals(saw, popular.get(2).getKey());
-        assertEquals(1.0, popular.get(2).getValue());
+        assertEquals(1, popular.get(2).getValue());
     }
 }
