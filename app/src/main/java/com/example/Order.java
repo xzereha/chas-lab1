@@ -13,7 +13,19 @@ public class Order {
     private final Map<Product, Integer> entries;
     private final String customerName;
 
+    /**
+     * Create a new order for the specified customer.
+     * 
+     * @param customerName Name of the customer placing the order, must not be null
+     *                     or empty.
+     * @throws IllegalArgumentException if customerName is null or empty.
+     */
     public Order(String customerName) {
+        if (customerName == null)
+            throw new IllegalArgumentException("Customer name must not be null");
+        if (customerName.trim().isEmpty())
+            throw new IllegalArgumentException("Customer name must not be empty");
+
         this.orderID = nextID++;
         // HashMap is used since the common case is adding or modifying Product entries,
         // and sorting is not needed.
@@ -48,10 +60,16 @@ public class Order {
      * If there already is product of that count then the new will be added to that
      * amount.
      * 
-     * @param product The type of product to add.
-     * @param count   The amount of the product.
+     * @param product The type of product to add, must not be null.
+     * @param count   The amount of the product, must be positive.
+     * @throws IllegalArgumentException if product is null or count is not positive.
      */
     public void addProduct(Product product, int count) {
+        if (product == null)
+            throw new IllegalArgumentException("Product must not be null");
+        if (count <= 0)
+            throw new IllegalArgumentException("Count must be positive");
+
         // Merge the new count with any existing, creating a new entry if needed.
         entries.merge(product, count, Integer::sum);
     }

@@ -112,5 +112,31 @@ public class Demo {
                 logger.error("Caught customer exception: {}", e.getMessage());
             }
         }
+
+        // Some invalid usage
+        {
+            try {
+                var t = store.getProduct(null);
+            } catch (ProductNotFoundException e) {
+                logger.error("Caught product exception: {}", e.getMessage());
+            }
+            try {
+                var order = new Order(null);
+            } catch (IllegalArgumentException e) {
+                logger.error("Caught order exception: {}", e.getMessage());
+            }
+            try {
+                var order = new Order("ValidName");
+                order.addProduct(null, 5);
+            } catch (IllegalArgumentException e) {
+                logger.error("Caught order exception: {}", e.getMessage());
+            }
+            try {
+                var order = new Order("ValidName");
+                order.addProduct(factory.getOrCreateProduct("Test", "Test", 10), 0);
+            } catch (IllegalArgumentException e) {
+                logger.error("Caught order exception: {}", e.getMessage());
+            }
+        }
     }
 }
