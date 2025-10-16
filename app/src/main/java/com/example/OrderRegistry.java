@@ -8,10 +8,12 @@ import java.util.Map;
 import java.util.Optional;
 
 public class OrderRegistry {
+    // Using HashMap to enable lookup of orders.
+
+    /** Mapping customer name to a list of their orders. */
     private final Map<String, List<Order>> orders;
 
     public OrderRegistry() {
-        // Using HashMap to enable lookup of orders.
         orders = new HashMap<>();
     }
 

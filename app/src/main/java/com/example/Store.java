@@ -41,6 +41,13 @@ public class Store {
                 });
     }
 
+    /**
+     * Gets a Product by id.
+     * 
+     * @param id The id to search for.
+     * @return The found product.
+     * @throws ProductNotFoundException If no product with that id exists.
+     */
     public Product getProduct(long id) throws ProductNotFoundException {
         return productManager.getProduct(id)
                 // Convert the optional to an exception

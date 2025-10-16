@@ -12,10 +12,11 @@ import org.slf4j.Logger;
 
 public class ProductRegistry {
     private static final Logger logger = LoggerFactory.getLogger(ProductRegistry.class);
+
+    // Using HashMap to enable lookup of products by name.
     private final Map<String, Product> products;
 
     public ProductRegistry() {
-        // Using HashMap to enable lookup for products by name.
         products = new HashMap<>();
     }
 

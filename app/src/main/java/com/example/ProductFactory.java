@@ -14,6 +14,7 @@ public class ProductFactory {
     // I like singletons, when stuff needs to be unique
     private static ProductFactory singleton = null;
 
+    // Hashmap is used to store created products by unique identifier
     private final Map<String, Product> productCache;
 
     // Just to disable creation
