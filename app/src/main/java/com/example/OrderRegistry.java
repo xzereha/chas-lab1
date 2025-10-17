@@ -18,6 +18,13 @@ public class OrderRegistry {
     }
 
     public void addOrder(String customerName, Order order) {
+        if (customerName == null || customerName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Customer name must not be null or empty");
+        }
+        if (order == null) {
+            throw new IllegalArgumentException("Order must not be null");
+        }
+
         // Append the new order, creating the Order list for the specified customer if
         // missing.
         // ArrayList is used for the per-customer orders since the common case is

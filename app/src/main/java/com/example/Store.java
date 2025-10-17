@@ -63,7 +63,12 @@ public class Store {
 
     public void placeOrder(String customerName, Order order) {
         logger.info("{} placed an order with {} items", customerName, order.getEntries().size());
-        orderManager.addOrder(customerName, order);
+        try {
+            orderManager.addOrder(customerName, order);
+        } catch (IllegalArgumentException e) {
+            logger.error("Failed to place order for customer {}: {}", customerName, e.getMessage());
+            throw e;
+        }
     }
 
     public List<Entry<Product, Integer>> mostPopularProducts(int count) {
